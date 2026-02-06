@@ -1,9 +1,8 @@
+
 """
 Contract: specs/technical.md §2 (task_type trend_analysis), §5.1 (GlobalState current trends).
 Assert: callable exists; return is list of JSON-serializable dicts. No impl yet → tests fail.
 """
-
-import pytest
 
 
 def test_trend_fetcher_exists_and_is_callable():

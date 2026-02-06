@@ -3,8 +3,6 @@ Contract: specs/technical.md §2.2 context.required_resources (array of MCP reso
 Assert: interface exists; return is list of strings (URIs). No impl yet → tests fail.
 """
 
-import pytest
-
 
 def test_skills_interface_exists_and_is_callable():
     from skills_interface import get_required_resources
