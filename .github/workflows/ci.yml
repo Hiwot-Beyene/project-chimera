@@ -16,6 +16,10 @@ jobs:
       - name: Build image
         run: make setup
 
+      # Lint (tests/ and skills/) in container; fail workflow if lint fails. Task 3.3.
+      - name: Lint
+        run: make lint
+
       # Run test suite in container; step fails if pytest fails
       - name: Run tests
         run: make test
