@@ -1,5 +1,6 @@
 # CodeRabbit AI Review Policy for Project Chimera
 # Purpose: Enforce spec alignment, security, and test discipline
+# CodeRabbit integration verified for this repository.
 
 review:
   strict: true
