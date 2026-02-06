@@ -42,6 +42,59 @@ This directory holds **Skills**: reusable, documented capabilities that agents (
 
 ---
 
+## Skill Catalog (I/O Schemas)
+
+Each Skill has explicit input/output and error contracts so agents can implement against clear specs. Stub implementations use TODOs tied to spec sections.
+
+### get_required_resources
+
+**Spec:** specs/technical.md §2.2 (context.required_resources).
+
+| Contract | Field | Type | Required | Description |
+|----------|--------|------|----------|-------------|
+| Input | (none) | — | — | Or optional task_context for context-dependent URIs. |
+| Output | — | list[str] | — | MCP resource URI strings (e.g. `mcp://news/trends`). |
+| Error | — | list empty or raised | — | On failure return [] or raise; caller must not assume non-empty. |
+
+**MCP:** Resolve from config/mcp-servers.json resource URI templates. **TODO in code:** specs/technical.md §2.2, config/mcp-servers.json.
+
+---
+
+### fetch_trends
+
+**Spec:** specs/technical.md §2 (task_type trend_analysis), §5.1 GlobalState current trends; functional P5.
+
+| Contract | Field | Type | Required | Description |
+|----------|--------|------|----------|-------------|
+| Input | (none) | — | — | Optional: tenant_id, time_range (future). |
+| Output | item | dict | — | JSON-serializable; e.g. id (str), label (str), score (float), source_uri (str). |
+| Output | — | list[dict] | — | List of trend items. |
+| Error | — | [] or raise | — | Empty list or exception; see MCP failure handling. |
+
+**MCP:** news_trends server, Resources mcp://news/trends (config/mcp-servers.json). **TODO in code:** specs/technical.md §5.1, config/mcp-servers.json.
+
+---
+
+### budget_check
+
+**Spec:** specs/technical.md §5.1 (Planner balance check); specs/functional.md P6; FR 5.1.
+
+| Contract | Field | Type | Required | Description |
+|----------|--------|------|----------|-------------|
+| Input | tenant_id | string | yes | Tenant scope (tenant isolation). |
+| Input | agent_id | string | yes | Agent whose balance to check. |
+| Input | amount_required | string or number | yes | Amount needed for the workflow. |
+| Input | currency_or_asset | string | yes | Asset or currency identifier. |
+| Output | allowed | boolean | yes | True iff current_balance >= amount_required. |
+| Output | current_balance | string or number | yes | Current balance (opaque from MCP). |
+| Output | required | string or number | yes | Echo of amount_required. |
+| Output | reason | string or null | no | Human-readable reason when allowed=false. |
+| Error | — | raised or structured | — | On MCP/credential failure raise; or return { "allowed": false, "reason": "..." }. |
+
+**MCP:** wallet_commerce server; read balance via Resource or Tool only (no direct API). **TODO in code:** specs/technical.md §5.1, specs/functional.md P6, config/mcp-servers.json.
+
+---
+
 ## MCP Usage Requirements
 
 - **External data and actions.** When a Skill needs to read external data (e.g. trends, mentions, market data) or perform external actions (e.g. post, transfer), it must do so via MCP Resources or MCP Tools. The Skill description must name the MCP primitives it uses (e.g. resource URIs, tool names) and the expected request/response shape, not the underlying third-party API.

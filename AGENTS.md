@@ -18,6 +18,10 @@ Centralized context for AI agents and contributors. Authority: **specs/_meta.md*
 
 - **Behavior and contracts:** specs/functional.md, specs/technical.md
 - **Hard constraints and invariants:** specs/_meta.md
+- **Security (AuthN/AuthZ, rate limit, moderation):** specs/security.md
+- **Frontend (screens, APIs):** specs/frontend_ux.md
+- **MCP runtime config:** config/mcp-servers.json, docs/mcp-config.md
 - **Testing (TDD):** specs/testing_strategy.md, tests/
 - **Skills and MCP:** specs/tooling_and_skills.md, skills/README.md
 - **CI/CD:** specs/cicd.md, .github/workflows/ci.yml, Makefile
+- **Architecture decisions:** docs/adr/

@@ -2,6 +2,12 @@
 
 Runtime MCP servers used by Planner, Worker, and Judge. **Spec:** specs/tooling_and_skills.md, specs/_meta.md (MCP-only external interaction).
 
+## Versioned config
+
+- **File:** `config/mcp-servers.json` (version `1.0.0`).
+- Lists each server: `id`, `purpose`, `endpoint_url` (placeholder; override via `MCP_SERVER_{SERVER_ID}_URL`), `transport` (e.g. `sse`), and tool/resource schema shapes.
+- Agents wire runtime MCP usage from this file; replace placeholder URLs per environment; credentials are never in the file.
+
 ## Principle
 
 - Agent runtime talks to the outside world **only** via an MCP Host and MCP Servers (Resources, Tools, Prompts).

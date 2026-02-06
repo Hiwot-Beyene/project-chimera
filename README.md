@@ -27,12 +27,17 @@ All commands run inside Docker; no host Python required.
 
 ## Layout
 
-- **specs/** — _meta, functional, technical, testing, CI/CD, tooling. Specs override all other docs.
-- **docs/** — SRS and project docs.
+- **specs/** — _meta, functional, technical, security, frontend_ux, testing, CI/CD, tooling. Specs override all other docs.
+- **docs/** — SRS, ADRs (docs/adr/), MCP config doc.
+- **config/** — Versioned MCP server config (config/mcp-servers.json).
 - **skills/** — Runtime skills (contracts in skills/README.md; implementations under skills/).
 - **tests/** — pytest; TDD per specs/testing_strategy.md.
 - **.cursor/rules/** — Agent rules (spec-first, MCP governance).
 - **.github/workflows/ci.yml** — Lint, security, test on push/PR.
+
+## Architecture decisions
+
+**docs/adr/** — ADRs for DB choice, MCP-only interaction, CI design, and Planner–Worker–Judge roles. See docs/adr/README.md.
 
 ## Acceptance criteria
 

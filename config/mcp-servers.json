@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "description": "Runtime MCP servers for Planner, Worker, Judge. Placeholder URLs and schema shapes; secrets injected at runtime. Spec: specs/tooling_and_skills.md, specs/_meta.md.",
+  "servers": [
+    {
+      "id": "social",
+      "purpose": "Post, reply, like; platform APIs wrapped as MCP Tools",
+      "endpoint_url": "https://mcp.example.com/social",
+      "transport": "sse",
+      "credentials": "injected",
+      "tools": [
+        {
+          "name": "post_tweet",
+          "description": "Publish a tweet (Twitter/X).",
+          "input_schema": {
+            "type": "object",
+            "required": ["text"],
+            "properties": {
+              "text": { "type": "string", "maxLength": 280 },
+              "reply_to_id": { "type": "string" }
+            }
+          }
+        },
+        {
+          "name": "reply_comment",
+          "description": "Reply to a mention or comment.",
+          "input_schema": {
+            "type": "object",
+            "required": ["target_id", "text"],
+            "properties": {
+              "target_id": { "type": "string" },
+              "text": { "type": "string" }
+            }
+          }
+        }
+      ],
+      "resources": [
+        { "uri_template": "mcp://social/mentions/{agent_id}", "description": "Mentions for agent" }
+      ]
+    },
+    {
+      "id": "news_trends",
+      "purpose": "Resources for news and trend data",
+      "endpoint_url": "https://mcp.example.com/news",
+      "transport": "sse",
+      "credentials": "injected",
+      "tools": [],
+      "resources": [
+        { "uri_template": "mcp://news/trends", "description": "Trend clusters (FR 2.2)" },
+        { "uri_template": "mcp://news/headlines", "description": "Headlines feed" }
+      ]
+    },
+    {
+      "id": "wallet_commerce",
+      "purpose": "On-chain actions via e.g. Coinbase AgentKit",
+      "endpoint_url": "https://mcp.example.com/wallet",
+      "transport": "sse",
+      "credentials": "injected",
+      "tools": [
+        {
+          "name": "execute_transaction",
+          "description": "Propose transaction; CFO Judge must approve before execution.",
+          "input_schema": {
+            "type": "object",
+            "required": ["amount", "asset", "recipient"],
+            "properties": {
+              "amount": { "type": "string" },
+              "asset": { "type": "string" },
+              "recipient": { "type": "string" }
+            }
+          }
+        }
+      ],
+      "resources": []
+    },
+    {
+      "id": "vector_db",
+      "purpose": "Semantic memory, long-term storage (Weaviate)",
+      "endpoint_url": "https://mcp.example.com/weaviate",
+      "transport": "sse",
+      "credentials": "injected",
+      "tools": [
+        {
+          "name": "query_memory",
+          "description": "Semantic query over long-term memory.",
+          "input_schema": {
+            "type": "object",
+            "required": ["query", "tenant_id", "agent_id"],
+            "properties": {
+              "query": { "type": "string" },
+              "tenant_id": { "type": "string" },
+              "agent_id": { "type": "string" },
+              "limit": { "type": "integer", "default": 10 }
+            }
+          }
+        }
+      ],
+      "resources": [
+        { "uri_template": "mcp://vector_db/memories/{tenant_id}/{agent_id}", "description": "Agent memories (tenant-scoped)" }
+      ]
+    }
+  ],
+  "env_overrides": {
+    "endpoint_url": "MCP_SERVER_{SERVER_ID}_URL",
+    "credentials": "From secrets manager; never in repo."
+  }
+}
