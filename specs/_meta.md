@@ -68,6 +68,8 @@ The 2026 Edition is founded on: **MCP** for all external connectivity, **Swarm A
 
 - `specs/functional.md` — user stories and SRS traceability
 - `specs/technical.md` — API contracts, Task/Result schemas, DB ERD, state rules
+- `specs/security.md` — AuthN/AuthZ (JWT + roles), rate-limiting, content moderation pipeline
+- `specs/frontend_ux.md` — main screens, fields, API mapping, component list for Dashboard UI
 - `specs/openclaw_integration.md` — OpenClaw discoverability and lifecycle (conceptual; protocols out of scope for current phase)
 - `specs/tooling_and_skills.md` — basic MCP setup; Dev MCPs vs Runtime Skills; where interfaces are defined
 - `specs/testing_strategy.md` — basic unit tests; TDD (failing tests before implementation, defining goal posts)
