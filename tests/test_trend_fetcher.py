@@ -6,18 +6,18 @@ Assert: callable exists; return is list of JSON-serializable dicts. No impl yet 
 
 
 def test_trend_fetcher_exists_and_is_callable():
-    from trend_fetcher import fetch_trends
+    from skills.trend_fetcher import fetch_trends
     assert callable(fetch_trends)
 
 
 def test_trend_fetcher_returns_list():
-    from trend_fetcher import fetch_trends
+    from skills.trend_fetcher import fetch_trends
     result = fetch_trends()
     assert isinstance(result, list)
 
 
 def test_trend_fetcher_return_matches_schema():
-    from trend_fetcher import fetch_trends
+    from skills.trend_fetcher import fetch_trends
     result = fetch_trends()
     assert isinstance(result, list)
     for item in result:
@@ -28,7 +28,7 @@ def test_trend_fetcher_return_matches_schema():
 
 
 def test_trend_fetcher_return_usable_for_trend_analysis_task():
-    from trend_fetcher import fetch_trends
+    from skills.trend_fetcher import fetch_trends
     trends = fetch_trends()
     assert isinstance(trends, list)
 

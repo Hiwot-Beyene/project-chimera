@@ -25,8 +25,8 @@
 
 | Test file | Spec / contract | Goal post (what tests define) |
 |-----------|-----------------|-------------------------------|
-| `tests/test_skills_interface.py` | `technical.md` §2.2 `context.required_resources` | `get_required_resources` exists, is callable, returns a list of strings (MCP resource URIs). |
-| `tests/test_trend_fetcher.py` | `technical.md` §2 (task_type `trend_analysis`), §5.1 (GlobalState current trends) | `fetch_trends` exists, is callable, returns a list of JSON-serializable dicts suitable for trend analysis. |
+| `tests/test_skills_interface.py` | `technical.md` §2.2 `context.required_resources` | `skills.skills_interface.get_required_resources` exists, is callable, returns a list of strings (MCP resource URIs). |
+| `tests/test_trend_fetcher.py` | `technical.md` §2 (task_type `trend_analysis`), §5.1 (GlobalState current trends) | `skills.trend_fetcher.fetch_trends` exists, is callable, returns a list of JSON-serializable dicts suitable for trend analysis. |
 
 New capabilities should add tests first that encode the spec contract; implementation follows until those tests pass.
 
