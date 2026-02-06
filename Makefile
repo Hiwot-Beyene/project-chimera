@@ -16,6 +16,10 @@ test:
 lint:
 	docker run --rm -v "$(PWD)":/app -w /app $(IMAGE) ruff check tests/ skills/
 
+# security: Run security checks in Docker. Bandit (code, high-severity only) + pip-audit (deps). CI governance.
+security:
+	docker run --rm -v "$(PWD)":/app -w /app $(IMAGE) sh -c 'bandit -r tests/ skills/ --severity-level high && pip-audit'
+
 # spec-check: Verify code alignment with specs. Placeholder: ensures specs/ exists and _meta.md is present.
 spec-check:
 	docker run --rm -v "$(PWD)":/app -w /app $(IMAGE) sh -c 'test -d specs && test -f specs/_meta.md && echo "spec-check placeholder: OK"'

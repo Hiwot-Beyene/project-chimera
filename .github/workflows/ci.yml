@@ -16,10 +16,12 @@ jobs:
       - name: Build image
         run: make setup
 
-      # Lint (tests/ and skills/) in container; fail workflow if lint fails. Task 3.3.
+      # Governance pipeline: lint, security, test — all in Docker
       - name: Lint
         run: make lint
 
-      # Run test suite in container; step fails if pytest fails
+      - name: Security checks
+        run: make security
+
       - name: Run tests
         run: make test
