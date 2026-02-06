@@ -20,11 +20,10 @@ include = ["tests/**/*.py", "skills/**/*.py"]
 
 [tool.ruff.lint]
 # Enforce: unused imports, undefined names, basic style. No opinionated rules.
+# E302/E303 omitted (preview-only in Ruff; would require preview = true).
 select = [
     "F401",   # unused imports
     "F821",   # undefined names
-    "E302",   # two blank lines before top-level def/class
-    "E303",   # too many blank lines
     "W291",   # trailing whitespace
     "W293",   # blank line contains whitespace
 ]
