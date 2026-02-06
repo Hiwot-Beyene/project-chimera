@@ -1,0 +1,21 @@
+---
+alwaysApply: true
+---
+
+# Project Chimera — Cursor Rules
+
+## Project context
+
+Project Chimera is an autonomous influencer system. It is a swarm of Planner, Worker, and Judge agents that create and govern content and agentic commerce via MCP. The single source of truth for behavior and architecture is the SRS (docs/) and the specs (specs/).
+
+## Prime Directive
+
+NEVER generate code without checking specs/ first. Read the relevant spec files (_meta.md, functional.md, technical.md) before writing or changing any code. If a feature or contract is not in the specs, do not invent it—align with existing spec or flag the gap.
+
+## Traceability
+
+Always explain the plan before writing code. State which spec items or user stories the change satisfies, and outline the steps (e.g. which components, contracts, or invariants are involved). Then implement. This keeps changes traceable to specs and reduces drift.
+
+## Spec supremacy
+
+specs/ overrides all other documents. If the SRS, docs, or code conflicts with specs/_meta.md, specs/functional.md, or specs/technical.md, the specs/ version wins. Update code and docs to match specs; do not change specs to match existing code unless the change is explicitly requested and approved.
