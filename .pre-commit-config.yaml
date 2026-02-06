@@ -1,0 +1,38 @@
+# Project Chimera — pre-commit governance
+# Hooks apply to tests/ and skills/ only. No application code scanned.
+# Install: pip install pre-commit && pre-commit install
+
+default_language_version:
+  python: python3.12
+
+repos:
+  # General file hygiene: trailing whitespace, final newline, valid YAML
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace
+        name: Trim trailing whitespace
+        files: ^(tests/|skills/)
+      - id: end-of-file-fixer
+        name: Ensure newline at EOF
+        files: ^(tests/|skills/)
+      - id: check-yaml
+        name: Validate YAML syntax
+        files: ^(tests/|skills/).*\.(yaml|yml)$
+
+  # Python formatting (Black)
+  - repo: https://github.com/psf/black
+    rev: 24.10.0
+    hooks:
+      - id: black
+        name: Black (format)
+        files: ^(tests/|skills/).*\.py$
+
+  # Python linting (Ruff)
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.8.0
+    hooks:
+      - id: ruff
+        name: Ruff (lint)
+        args: [--fix]
+        files: ^(tests/|skills/).*\.py$
