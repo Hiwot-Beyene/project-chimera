@@ -6,7 +6,8 @@ WORKDIR /app
 
 # Deterministic install from lock file; no dev deps
 COPY pyproject.toml uv.lock ./
-RUN pip install --no-cache-dir uv \
+RUN pip install --no-cache-dir --upgrade "pip>=25.3" \
+    && pip install --no-cache-dir uv \
     && uv sync --frozen --no-dev
 
 # pytest, ruff, bandit, pip-audit for CI (not in project deps)
