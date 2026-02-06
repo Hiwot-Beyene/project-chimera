@@ -1,0 +1,46 @@
+# CodeRabbit AI Review Policy for Project Chimera
+# Purpose: Enforce spec alignment, security, and test discipline
+
+review:
+  strict: true
+  tone: conservative
+
+checks:
+  spec_alignment:
+    enabled: true
+    description: >
+      Ensure all code changes align with the authoritative specifications
+      located in the specs/ directory.
+    rules:
+      - flag_if_code_not_referenced_in_specs
+      - flag_if_behavior_not_defined_in_specs
+
+  test_coverage:
+    enabled: true
+    description: >
+      Ensure all new or modified behavior is covered by tests.
+    rules:
+      - flag_if_no_tests_added
+      - flag_if_tests_do_not_assert_contracts
+
+  security:
+    enabled: true
+    description: >
+      Detect potential security risks and unsafe practices.
+    rules:
+      - flag_hardcoded_secrets
+      - flag_api_keys_or_tokens
+      - flag_unsafe_system_calls
+      - flag_unvalidated_external_input
+
+  architecture:
+    enabled: true
+    description: >
+      Enforce architectural constraints defined in the specs.
+    rules:
+      - flag_direct_external_api_calls
+      - flag_bypassing_mcp_or_governance_layers
+
+reporting:
+  require_explanations: true
+  block_merge_on_critical_findings: true

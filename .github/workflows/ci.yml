@@ -1,0 +1,21 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      # Repo needed for Makefile, Dockerfile, and source
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Build project image per Dockerfile; no host Python
+      - name: Build image
+        run: make setup
+
+      # Run test suite in container; step fails if pytest fails
+      - name: Run tests
+        run: make test
