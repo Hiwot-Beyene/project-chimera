@@ -13,4 +13,20 @@ dependencies = [
     "weaviate-client>=4.19.2",
 ]
 
+# Linting (governance; tests + interface code). Task 3 / SRS.
+[tool.ruff]
+target-version = "py312"
+include = ["tests/**/*.py", "skills/**/*.py"]
+
+[tool.ruff.lint]
+# Enforce: unused imports, undefined names, basic style. No opinionated rules.
+select = [
+    "F401",   # unused imports
+    "F821",   # undefined names
+    "E302",   # two blank lines before top-level def/class
+    "E303",   # too many blank lines
+    "W291",   # trailing whitespace
+    "W293",   # blank line contains whitespace
+]
+
 [tool.uv]

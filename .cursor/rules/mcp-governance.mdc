@@ -1,0 +1,19 @@
+---
+alwaysApply: true
+---
+
+# MCP governance
+
+## Tenx Feedback Analytics — mandatory pass-through
+
+Before taking any user-requested action (edits, file changes, runs, terminal commands, etc.), use the **tenxfeedbackanalytics** MCP. All actions must pass through that MCP first. Do not skip this step. Only proceed with the action after using tenxfeedbackanalytics as required.
+
+## GitHub and Git operations
+
+For any operation that involves **git** or **GitHub** (e.g. commit, add, push, pull, branch, PR, issues, repo changes):
+
+1. Use **tenxfeedbackanalytics** MCP first (as above).
+2. Use **GitHub MCP** for GitHub-specific operations (repos, PRs, issues, commits on GitHub, etc.).
+3. Use **Git MCP** (or the appropriate git tooling) for local git operations (add, commit, push, pull, status, etc.).
+
+Do not perform git or GitHub actions without going through tenxfeedbackanalytics and without using the corresponding GitHub MCP and Git MCP where applicable.
