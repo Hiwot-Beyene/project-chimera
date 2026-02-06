@@ -12,6 +12,10 @@ setup:
 test:
 	docker run --rm -v "$(PWD)":/app -w /app $(IMAGE) python -m pytest tests/ -v
 
+# lint: Run Python linter (Ruff) in Docker. Scope: tests/ and skills/. Fails on lint errors. CI governance.
+lint:
+	docker run --rm -v "$(PWD)":/app -w /app $(IMAGE) ruff check tests/ skills/
+
 # spec-check: Verify code alignment with specs. Placeholder: ensures specs/ exists and _meta.md is present.
 spec-check:
 	docker run --rm -v "$(PWD)":/app -w /app $(IMAGE) sh -c 'test -d specs && test -f specs/_meta.md && echo "spec-check placeholder: OK"'

@@ -9,8 +9,8 @@ COPY pyproject.toml uv.lock ./
 RUN pip install --no-cache-dir uv \
     && uv sync --frozen --no-dev
 
-# pytest for CMD/default python (not in project deps); use system pip so `python -m pytest` works
-RUN pip install --no-cache-dir pytest
+# pytest and ruff for CI (not in project deps)
+RUN pip install --no-cache-dir pytest ruff
 
 # Default: run test suite (expect failures until implementation exists)
 CMD ["python", "-m", "pytest", "tests/", "-v"]
