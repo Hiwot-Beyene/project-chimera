@@ -2,6 +2,8 @@
 
 Audience: **developers and system architects** building or extending the Chimera platform. Derived from the Project Chimera SRS.
 
+**Spec:** Dev MCPs and this document are part of the strategic tooling model. Overview and separation from Runtime Skills: `specs/tooling_and_skills.md`.
+
 ---
 
 ## 1. Developer MCP Tools

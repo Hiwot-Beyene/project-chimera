@@ -83,3 +83,5 @@ Stories for the Judge role: review, approve/reject/escalate, OCC, HITL, CFO, and
 - **Planner:** §3.1.1; FR 2.1, 2.2, 3.2, 5.1, 6.0; §4.2 Developer Notes.
 - **Worker:** §3.1.2; FR 3.0, 3.1, 4.0, 4.1, 6.0; NFR 1.0.
 - **Judge:** §3.1.3, §4.3 Developer Notes; FR 1.2, 4.1, 5.2, 6.1; NFR 1.1, 1.2.
+
+**Related specs:** `specs/technical.md` (contracts, schemas, ERD), `specs/openclaw_integration.md` (OpenClaw discoverability).

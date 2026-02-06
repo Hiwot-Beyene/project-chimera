@@ -2,6 +2,8 @@
 
 This directory holds **Skills**: reusable, documented capabilities that agents (or developers) invoke to perform a well-scoped task in the Chimera ecosystem. This README defines what a Skill is, the rules Skills must follow, input/output expectations, and MCP usage. No implementation is specified here.
 
+**Spec:** Runtime Skills are defined here; separation from Developer MCPs and interface index: `specs/tooling_and_skills.md`.
+
 ---
 
 ## What a Skill Is

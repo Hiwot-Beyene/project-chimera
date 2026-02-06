@@ -1,6 +1,20 @@
 # Technical Specifications
 
-Derived from the Project Chimera SRS, `specs/_meta.md`, and `specs/functional.md`. No executable code; JSON and structured schemas only.
+Derived from the Project Chimera SRS, `specs/_meta.md`, and `specs/functional.md`. No executable code; JSON and structured schemas only. Related: `specs/openclaw_integration.md`, `specs/tooling_and_skills.md` (MCP setup, Dev MCPs vs Runtime Skills).
+
+---
+
+## Technology stack / Implementation
+
+| Area | Choice | Notes |
+|------|--------|------|
+| **Language** | Python 3.12 | `pyproject.toml` requires-python `>=3.12`. |
+| **Runtime / CI** | Docker | Build and run; no host Python in CI (Makefile, GitHub Actions). |
+| **Linting / tests** | Ruff, pytest | Governance: lint and test run inside Docker; scope tests/ and skills/. Strategy: `specs/testing_strategy.md`. Pipeline: `specs/cicd.md`. |
+| **Queues / short-term** | Redis | TaskQueue, ReviewQueue, episodic cache, budget/governance keys (SRS FR 6.0; tooling_strategy). |
+| **Transactional state** | PostgreSQL | GlobalState, user data, campaign config, operational logs, video metadata (SRS §2.3). |
+| **Long-term memory** | Weaviate | Vector store for semantic memory and retrieval (SRS; tooling_strategy). |
+| **External connectivity** | MCP | All external perception and action via Model Context Protocol; no direct API calls from core. |
 
 ---
 

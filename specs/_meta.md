@@ -61,3 +61,14 @@ The 2026 Edition is founded on: **MCP** for all external connectivity, **Swarm A
 - **Never** allow one tenant’s agent to access another tenant’s memories or financial assets.
 - **Never** bypass the Judge for Worker output; every result is approved, rejected, or escalated by the Judge.
 - **Never** implement a single monolithic agent that bypasses the Planner–Worker–Judge swarm structure for execution.
+
+---
+
+## Specs
+
+- `specs/functional.md` — user stories and SRS traceability
+- `specs/technical.md` — API contracts, Task/Result schemas, DB ERD, state rules
+- `specs/openclaw_integration.md` — OpenClaw discoverability and lifecycle (conceptual; protocols out of scope for current phase)
+- `specs/tooling_and_skills.md` — basic MCP setup; Dev MCPs vs Runtime Skills; where interfaces are defined
+- `specs/testing_strategy.md` — basic unit tests; TDD (failing tests before implementation, defining goal posts)
+- `specs/cicd.md` — basic build pipeline; governance pipeline (Linting, Security Checks, Testing) in Docker
